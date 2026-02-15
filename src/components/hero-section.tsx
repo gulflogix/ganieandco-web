@@ -1,21 +1,22 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background with scenic blur placeholder */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage:
-            "linear-gradient(135deg, #2C3E50 0%, #34495E 30%, #1a1a2e 60%, #16213e 100%)",
-        }}
-      >
-        {/* Overlay gradient for depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60" />
-      </div>
+      {/* Background image — Pietermaritzburg City Hall */}
+      <Image
+        src="/images/pmb-hero-image.png"
+        alt="Pietermaritzburg City Hall at golden hour"
+        fill
+        className="object-cover object-center"
+        priority
+        quality={90}
+      />
+      {/* Overlay gradient for depth and text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70" />
 
       {/* Decorative gold line accents */}
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
