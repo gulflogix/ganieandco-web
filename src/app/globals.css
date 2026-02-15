@@ -1,26 +1,112 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light Mode: Parchment */
+  --background: #F9F7F5;
+  --foreground: #1C1C1E;
+  --card: #FFFFFF;
+  --card-foreground: #1C1C1E;
+  --muted: #F0EDE8;
+  --muted-foreground: #6B6B6B;
+  --accent: #C9A96E;
+  --accent-foreground: #1C1C1E;
+  --border: rgba(0, 0, 0, 0.06);
+  --ring: #C9A96E;
+  --glass: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.3);
+}
+
+.dark {
+  /* Dark Mode: Midnight Ink */
+  --background: #0C0E14;
+  --foreground: #E8E6E3;
+  --card: #13151D;
+  --card-foreground: #E8E6E3;
+  --muted: #1A1D28;
+  --muted-foreground: #8A8A8A;
+  --accent: #C9A96E;
+  --accent-foreground: #0C0E14;
+  --border: rgba(255, 255, 255, 0.08);
+  --ring: #C9A96E;
+  --glass: rgba(12, 14, 20, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.1);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-glass: var(--glass);
+  --color-glass-border: var(--glass-border);
+  --color-gold: #C9A96E;
+  --color-gold-light: #D4B87A;
+  --color-gold-dark: #B8944F;
+  --color-parchment: #F9F7F5;
+  --color-midnight: #0C0E14;
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  transition: background-color 0.8s ease, color 0.8s ease;
+}
+
+/* Selection colors */
+::selection {
+  background: #C9A96E;
+  color: #0C0E14;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C9A96E;
+  border-radius: 3px;
+}
+
+/* Floating label animation for contact form */
+.floating-label-input:focus ~ .floating-label,
+.floating-label-input:not(:placeholder-shown) ~ .floating-label {
+  transform: translateY(-1.5rem) scale(0.85);
+  color: #C9A96E;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Premium gold gradient text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #C9A96E 0%, #E8D5A3 50%, #C9A96E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
